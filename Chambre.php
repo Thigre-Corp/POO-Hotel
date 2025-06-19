@@ -16,7 +16,6 @@
             $this->_possedeWifi = $possedeWifi;
             $this->_tarif = $tarif;
             $this->_hotel = $hotel;
-            //$this->_estDisponible = true;
             $hotel->setChambre($this);
             ++self::$_id_Chambre;
         }

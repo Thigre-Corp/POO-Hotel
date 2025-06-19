@@ -12,8 +12,6 @@
         private string $_ville;
         private array $_chambres;
         private array $_reservations =[];
-
-        //->private array chambre.
         //---constructor
         public function __construct( string $nomHotel, int $nbEtoile, string $adresse, string $cp , string $ville){
             $this->_nomHotel = $nomHotel;
