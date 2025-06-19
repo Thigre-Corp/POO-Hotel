@@ -2,10 +2,14 @@
     box-sizing: border-box;
     margin: 0;
     padding : 0;
+    color: rgb(44, 44, 44);
 }
 
 h1{
-    text-align: justify;
+    color: black;
+}
+h2{
+    color: rgb(36, 35, 35);
 }
 
 div{
@@ -35,4 +39,12 @@ div{
 img{
     width: 16px;
     aspect-ratio: 1/1;
+}
+
+td{
+    padding: 0.5em 1em;
+}
+
+table tr:nth-child(2n+1){
+    background-color: antiquewhite;
 }
