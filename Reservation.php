@@ -39,7 +39,7 @@
             return self::$_id_Reservation;
         }
         //---setters
-        public function SetClient(Client $client){
+        public function setClient(Client $client){
             $this->_client = $client;
         }
         public function setChambre(Chambre $chambre){

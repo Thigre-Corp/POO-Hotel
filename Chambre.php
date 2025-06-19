@@ -16,7 +16,7 @@
             $this->_possedeWifi = $possedeWifi;
             $this->_tarif = $tarif;
             $this->_hotel = $hotel;
-            $hotel->setChambre($this);
+            $hotel->addChambre($this); // fair eune fonction add chambre // setter pas fait pour çà...
             ++self::$_id_Chambre;
         }
         //---toString

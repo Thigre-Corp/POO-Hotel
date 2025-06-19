@@ -66,12 +66,12 @@
         public function setVille(string $ville){
             $this->_ville = $ville;
         }
-        public function setChambre( Chambre $chambre){
-            $this->_chambres[] = $chambre;
-        }
         //---méthodes
         public function addReservation(Reservation $resa){
             $this->_reservations[]= $resa;
+        }
+        public function addChambre( Chambre $chambre){
+            $this->_chambres[] = $chambre;
         }
         public function getReservationsNumber(string $typeRetour){
             $compteurResa = count($this->getReservations());
