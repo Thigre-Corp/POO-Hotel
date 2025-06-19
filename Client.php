@@ -3,8 +3,9 @@
     class Client {
         //---propriétés
         static int $_id_Client = 0;
-        protected string $_nomClient;
-        protected string $_prenomClient;
+        private string $_nomClient;
+        private string $_prenomClient;
+        private array $_reservations;
         //---constructor
         public function __construct(string $nomClient, string $prenomClient){
             $this->_nomClient = $nomClient;
@@ -13,7 +14,7 @@
         }
         //---toString
         public function __toString(){
-            return ($this->_nomClient+" "+$this->_prenomClient);
+            return ($this->_prenomClient." ".$this->_nomClient);
         }
         //---getters
         public function getNom(){
@@ -21,6 +22,9 @@
         }
         public function getPrenom(){
             return $this->_prenomClient;
+        }
+        public function getReservations(){
+            return $this->_reservations;
         }
         public function getID(){
             return self::$_id_Client;
@@ -31,6 +35,30 @@
         }
         public function setPrenom(string $prenomClient){
             $this->_prenomClient = $prenomClient;
+        }
+        //---méthodes
+        public function addReservation(Reservation $resa){
+            $this->_reservations[] = $resa;
+        }
+        public function getReservationsNumber(string $typeRetour){
+            $compteurResa = count($this->getReservations());
+            if ($typeRetour == "int"){
+                return $compteurResa;
+            }
+            else {
+                $returnString ='';
+                switch($compteurResa){
+                    case 0:
+                        $returnString = "<div class=clear>Aucune Réservation</div>";
+                        break;
+                    case 1:
+                        $retunrString = "<div class=green>1 Réservation</div>";
+                        break;
+                    default:
+                        $returnString = "<div class=green>".$compteurResa." Réservations</div>";
+                }
+                return $returnString;
+            }
         }
     }
 

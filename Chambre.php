@@ -1,29 +1,28 @@
 <?php
 
-    require_once 'Hotel.php';
-
-    // ou class Chambre extend Hotel...serait-ce plus pertinent ?
-
     class Chambre {
         //---propriétés
         static int $_id_Chambre = 0;
-        protected int $_numChambre;
-        protected int $_nbLits;
-        protected bool $_possedeWifi;
-        protected float $_tarif;
-        protected int $_id_Hotel; //prendre juste l'ID de l'hotel (moins de données dupliquées) ou prendre tout de l'hotel (récupérer ses méthodes ??)
+        private int $_numChambre;
+        private int $_nbLits;
+        private bool $_possedeWifi;
+        private float $_tarif;
+        private Hotel $_hotel;
+        private bool $_estDisponible = true;
         //---constructor
         public function __construct( int $numChambre, int $nbLits, bool $possedeWifi, float $tarif , Hotel $hotel){
             $this->_numChambre = $numChambre;
             $this->_nbLits = $nbLits;
             $this->_possedeWifi = $possedeWifi;
             $this->_tarif = $tarif;
-            $this->_id_Hotel = $hotel.getID();
+            $this->_hotel = $hotel;
+            //$this->_estDisponible = true;
+            $hotel->setChambre($this);
             ++self::$_id_Chambre;
         }
         //---toString
         public function __toString(){
-            return ("Chambre "+$this->_numChambre+" "+$this->_id_Hotel); // si extends, accès au parent.
+            return ("Chambre : ".$this->_numChambre." (".$this->_nbLits." lits - ".$this->_tarif." € - Wifi : ".($this->_possedeWifi ? "oui)": "non)")); 
         }
         //---getters
         public function getNumChambre(){
@@ -41,10 +40,12 @@
         public function getID(){
             return self::$_id_Chambre;
         }
-        public function getHotelID(){
-            return $this->_id_Hotel;
+        public function getHotel() : Hotel {
+            return $this->_hotel;
         }
-
+        public function getDisponible(){
+            return $this->_estDisponible;
+        }
         //---setters
         public function setNumChambre(int $numChambre){
             $this->_numChambre = $numChambre;
@@ -57,5 +58,11 @@
         }
         public function setTarif(float $tarif){
             $this->_tarif = $tarif;
+        }
+        public function setHotel(Hotel $Hotel){
+            $this->_hotel = $hotel;
+        }
+        public function setDisponible(bool $estDisponible){
+            $this->_estDisponible = $estDisponible;
         }
     }

@@ -1,0 +1,38 @@
+:root{
+    box-sizing: border-box;
+    margin: 0;
+    padding : 0;
+}
+
+h1{
+    text-align: justify;
+}
+
+div{
+    padding: .2em .5em;
+}
+.green{
+    width: fit-content;
+    background-color: green;
+    color: white;
+    border-radius: 5%;
+}
+
+.red{
+    width: fit-content;
+    background-color: red;
+    color: white;
+    border-radius: 5%;
+}
+
+.clear{
+    width: fit-content;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    border-radius: 5%;
+}
+
+img{
+    width: 16px;
+    aspect-ratio: 1/1;
+}
